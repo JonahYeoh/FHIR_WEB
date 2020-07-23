@@ -13,6 +13,7 @@
     <link rel="stylesheet" type="text/css" href="/CSS/portal.css">
     <!--JavaScript程式-->
     <script src="/JS/portal.js"></script>
+    <script src="/JS/Cookie.js"></script>
     <script>
         /*登入*/
         function login() {
@@ -36,6 +37,11 @@
 
         function sign_up() {
             window.open("patient_portal.html");
+        }
+
+        function create_cookies(name, account) {
+            setCookie("name", name, 1);
+            setCookie("account", account, 1);
         }
     </script>
 </head>

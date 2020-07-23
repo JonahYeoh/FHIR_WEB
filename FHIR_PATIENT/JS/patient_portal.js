@@ -5,7 +5,9 @@ function HTTPPutData(urlStr, dataStr) {
     rawFile.onreadystatechange = function() {
         if (rawFile.readyState === 4) {
             ret = rawFile.responseText;
-            alert(ret);
+            // alert(ret);
+            alert("導向至登入頁面");
+            window.open("portal.html");
         }
     }
     rawFile.send(dataStr);
