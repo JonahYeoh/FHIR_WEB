@@ -50,6 +50,14 @@
             else
                 return value;
         }
+
+        function clear_input() {
+            var input_list = document.getElementsByTagName("input");
+            for (index = 0; index < input_list.length; index++) {
+                if (input_list[index].type == "text")
+                    input_list[index].value = "";
+            }
+        }
     </script>
 </head>
 
@@ -160,7 +168,7 @@
                                 <td></td>
                                 <td>
                                     <div id="language_div">
-                                        <span class="selection"><input type="radio" id="lang0y" name="userCommunication0" value="yes" />是</span>
+                                        <span class="selection"><input type="radio" id="lang0y" name="userCommunication0" value="yes" checked/>是</span>
                                         <span class="selection"><input type="radio" id="lang0n" name="userCommunication0" value="no" />否</span>
                                     </div>
                                 </td>
@@ -375,6 +383,7 @@
             <tr>
                 <td colspan="2" align="center">
                     <input type="button" onclick="register_patient();" value="提交" />
+                    <input type="button" onclick="clear_input();" value="清空" />
                 </td>
             </tr>
         </table>
