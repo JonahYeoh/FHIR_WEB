@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOG-IN PORTAL</title>
+    <!--字體庫-->
+    <link href='https://fonts.googleapis.com/css?family=Andika' rel='stylesheet'>
+    <!--ICON-->
+    <link rel="icon" href="/MEDIA/icon_FHIR.svg" sizes="16x16" type="image/svg" />
+    <!--漾式設計-->
+    <link rel="stylesheet" type="text/css" href="/CSS/theme.css" />
+    <link rel="stylesheet" type="text/css" href="/CSS/portal.css" />
+    <!--JavaScript程式-->
+    <script src="/JS/portal.js"></script>
+    <script src="/JS/Cookie.js"></script>
+    <script>
+        /*登入*/
+        function login() {
+            var acc = document.getElementById("acc").value;
+            var option = document.getElementById("role").value;
+            var url = "http://hapi.fhir.org/baseR4/" + option;
+            if (acc == "") {
+                alert("輸入不完整");
+                return undefined
+            }
+            if (option == "Practitioner") {
+                var given = document.getElementById("name").value;
+                if (given == "") {
+                    alert("輸入不完整");
+                    return undefined
+                }
+                url = url + "?given:exact=" + given;
+            } else {
+                url = url + "?_id=" + acc;
+            }
+            alert("查詢句 : " + url);
+            /*呼叫 /JS/portal.js中的function*/
+            HTTPGetData(url, acc, "main.html");
+        }
+        /*清空輸入欄位*/
+        function clear_input() {
+            document.getElementById("acc").value = "";
+            document.getElementById("name").value = "";
+        }
+
+        function sign_up(role) {
+            if (role == 1)
+                window.open("practitioner_portal.html");
+            else
+                window.open("practitioner_role_portal.html");
+        }
+
+        function create_cookies(name, account) {
+            setCookie("name", name, 1);
+            setCookie("account", account, 1);
+        }
+    </script>
+</head>
+
+<body>
+    <div class="main_container">
+        <img src="/MEDIA/icon_FHIR.svg" class="avatar">
+        <form>
+            <p>Account</p>
+            <input type="text" id="acc" maxlength="20" />
+            <p>Name</p>
+            <input type="text" id="name" maxlength="50" />
+            <p>Log In As</p>
+            <select id="role">
+                <option value="Practitioner">Practitioner</option>
+                <option value="PractitionerRole">PractionerRole</option>
+            </select>
+            <p>Organization</p>
+            <input type="text" id="org" maxlength="50" value="jonah" width="100" />
+            <br />
+            <div class="btn_row">
+                <input type="button" class="btn" value="Login" onclick="login();" />
+                <input type="button" class="btn" value="Clear" onclick="clear_input();" />
+                <input type="button" class="btn" value="Practitioner" onclick="sign_up(1);" />
+                <input type="button" class="btn" value="PractitionerRole" onclick="sign_up(2);" />
+            </div>
+
+        </form>
+    </div>
+</body>
+
+</html>

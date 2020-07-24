@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRACTITIONER ROLE PORTAL</title>
+    <!--字體庫-->
+    <link href='https://fonts.googleapis.com/css?family=Andika' rel='stylesheet'>
+    <!--ICON-->
+    <link rel="icon" href="/MEDIA/human_icon.png" sizes="16x16" type="image/png" />
+    <!--漾式設計-->
+    <link rel="stylesheet" type="text/css" href="/CSS/theme.css" />
+    <link rel="stylesheet" type="text/css" href="/CSS/practitioner_role_portal.css" />
+    <!--JavaScript程式-->
+    <script src="/JS/practitioner_role_portal.js"></script>
+    <script src="/JS/file_io.js"></script>
+    <script>
+        function register_practitioner_role() {
+            post_practitioner_role();
+        }
+
+        function get_text_value(id) {
+            return document.getElementById(id).value;
+        }
+
+        function get_radio_value(name) {
+            var group = document.getElementsByName(name);
+            if (group.length == 0) // when incorrect name was provided
+                return undefined;
+            for (i = 0; i < group.length; i++) {
+                if (group[i].checked)
+                    return group[i].value;
+            }
+            return undefined; // will never execute because default selection was provided
+        }
+
+        function get_dropdown_value(id) {
+            var dropdown_list = document.getElementById(id);
+            if (dropdown_list.length == 0) // when incorrect name was provided
+                return undefined;
+            for (i = 0; i < dropdown_list.length; i++) {
+                if (dropdown_list[i].selected)
+                    return dropdown_list[i].value;
+            }
+            return undefined; // will never execute because default selection was provided
+        }
+
+        function date_padding(value) {
+            if (value < 10)
+                return '0' + value;
+            else
+                return value;
+        }
+
+        function clear_input() {
+            var input_list = document.getElementsByTagName("input");
+            for (index = 0; index < input_list.length; index++) {
+                if (input_list[index].type == "text")
+                    input_list[index].value = "";
+            }
+        }
+
+        function fetch_data() {
+            const url = "https://hapi.fhir.org/baseR4/Location?organization=jonah";
+            const specialty_path = "/FILE/specialty.txt";
+            const role_path = "/FILE/role.txt";
+            HTTPGetData(url, load_list_http);
+            readTextFile(specialty_path, load_list_file);
+            readTextFile(role_path, load_list_file);
+        }
+
+        function load_list_file(response) {
+            var list = response.split("\n");
+            const tag_id = list[0].trim() + "_list";
+            var dropdown_list = document.getElementById(tag_id);
+            for (i = 1; i < list.length; i++) {
+                var tuple = list[i].split(",");
+                var option = document.createElement("option");
+                option.text = tuple[1];
+                option.value = tuple[0];
+                dropdown_list.add(option);
+            }
+        }
+
+        function load_list_http(response) {
+            var list = JSON.parse(response);
+            const tag_id = list.entry[0].resource.resourceType.toLowerCase() + "_list";
+            var dropdown_list = document.getElementById(tag_id);
+            for (i = 0; i < list.total; i++) {
+                var item = list.entry[i];
+                if (item.resource.status == "active") {
+                    var option = document.createElement("option");
+                    option.text = item.resource.name;
+                    option.value = item.resource.id;
+                    dropdown_list.add(option);
+                }
+            }
+        }
+    </script>
+</head>
+
+<body onload="fetch_data();">
+    <div class="main_container">
+        <table>
+            <tr>
+                <td align="center"><label>醫事人員帳號註冊</label></td>
+            </tr>
+            <tr>
+                <td style="padding:5px;">
+                    <div id="basic_data">
+                        <table>
+                            <tr>
+                                <td>
+                                    <span>Practitioner ID/帳號</span>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <input type="text" id="practitioner_ref" minlength="10" required />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span>Role/身份</span>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <select id="role_list">
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span>Speciality/科別</span>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <select id="specialty_list">
+
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span>Department/部門</span>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <select id="location_list">
+
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span>開始日期</span>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <input type="number" class="date_input" id="year_since" min="1900" value=2019 />
+                                    <input type="number" class="date_input" id="month_since" min="1" max="12" value="1" />
+                                    <input type="number" class="date_input" id="date_since" min="1" max="31" value="1" />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <input type="button" onclick="register_practitioner_role();" value="提交" />
+                    <input type="button" onclick="clear_input();" value="清空" />
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>

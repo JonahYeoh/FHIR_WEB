@@ -1,0 +1,11 @@
+specialty
+394612005,Urology
+394604002,Surgery-Ear, nose and throat surgery
+394605001,Surgery-Dental-Oral surgery
+408450004,Sleep studies
+394589003,Nephrology
+394802001,General medicine
+394579002,Cardiology
+394592004,Clinical oncology
+394733009,Medical specialty--OTHER--NOT LISTED	
+394732004,Surgical specialty--OTHER-NOT LISTED

@@ -1,0 +1,7 @@
+role
+doctor,Doctor
+nurse,Nurse
+pharmacist,Pharmacist
+researcher,Researcher
+teacher,Teacher/educator
+ict,ICT professional
