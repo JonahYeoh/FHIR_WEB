@@ -171,9 +171,9 @@ function post_patient() {
         }
     };
     // loading user's input
-    patient.id = get_text_value("nric");
+    patient.id = get_text_value("passport_number");
     for (i = 0; i < patient.identifier.length; i++)
-        patient.identifier[i].value = get_text_value("nric");
+        patient.identifier[i].value = get_text_value("passport_number");
     patient.name[0].prefix = get_dropdown_value("title");
     patient.name[0].given[0] = get_text_value("name");
     patient.gender = get_radio_value("gender");
