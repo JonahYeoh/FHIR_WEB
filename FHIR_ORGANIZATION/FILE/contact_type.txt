@@ -1,0 +1,7 @@
+contact_type
+BILL,Billing
+ADMIN,Administrative
+HR,Human Resource
+PAYOR,Payor
+PATINF,Patient
+PRESS,Press

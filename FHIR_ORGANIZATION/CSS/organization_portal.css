@@ -1,0 +1,42 @@
+.main_container {
+    width: 600px;
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.main_container table {
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    background-color: RGB(255, 221, 200);
+}
+
+.main_container label {
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+select,
+textarea {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: none;
+    border-bottom: 1px solid blue;
+    height: 15px;
+    width: 250px;
+    font-size: 10px;
+    background: transparent;
+}
+
+textarea {
+    height: 100px;
+}
+
+.main_container .date_input {
+    width: 50px;
+}

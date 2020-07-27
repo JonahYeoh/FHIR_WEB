@@ -1,0 +1,13 @@
+type
+prov,Healthcare Provider
+dept,Hospital Department
+team,Organization team
+govt,Goverment
+ins,Insurance Company
+pay,Payer
+edu,Education Institute
+reli,Religious Institution
+crs,Clinical Research Sponsor
+cg,Community Group
+bus,Non-Healthcare Business or Corporation
+other,Other

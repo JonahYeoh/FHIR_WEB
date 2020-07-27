@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ORGANIZATION PORTAL</title>
+    <!--字體庫-->
+    <link href='https://fonts.googleapis.com/css?family=Andika' rel='stylesheet'>
+    <!--ICON-->
+    <link rel="icon" href="/MEDIA/human_icon.png" sizes="16x16" type="image/png" />
+    <!--漾式設計-->
+    <link rel="stylesheet" type="text/css" href="/CSS/organization_portal.css" />
+    <link rel="stylesheet" type="text/css" href="/CSS/theme.css" />
+    <!--JavaScript程式-->
+    <script src="/JS/organization_portal.js"></script>
+    <script src="/JS/file_io.js"></script>
+    <script>
+        function register_organization() {
+            post_organization();
+        }
+
+        function get_text_value(id) {
+            return document.getElementById(id).value;
+        }
+
+        function get_dropdown_value(id) {
+            var dropdown_list = document.getElementById(id);
+            if (dropdown_list.length == 0) // when incorrect name was provided
+                return undefined;
+            for (i = 0; i < dropdown_list.length; i++) {
+                if (dropdown_list[i].selected)
+                    return dropdown_list[i].value;
+            }
+            return undefined; // will never execute because default selection was provided
+        }
+
+        function clear_input() {
+            var input_list = document.getElementsByTagName("input");
+            for (index = 0; index < input_list.length; index++) {
+                if (input_list[index].type == "text")
+                    input_list[index].value = "";
+            }
+        }
+
+        function fetch_data() {
+            const type_path = "/FILE/organization_type.txt";
+            readTextFile(type_path, load_list_file);
+        }
+
+        function load_list_file(response) {
+            var list = response.split("\n");
+            const tag_id = list[0].trim() + "_list";
+            var dropdown_list = document.getElementById(tag_id);
+            for (i = 1; i < list.length; i++) {
+                var tuple = list[i].split(",");
+                var option = document.createElement("option");
+                option.text = tuple[1];
+                option.value = tuple[0];
+                dropdown_list.add(option);
+            }
+        }
+    </script>
+</head>
+
+<body onload="fetch_data();">
+    <div class="main_container">
+        <table>
+            <tr>
+                <th>組織帳號註冊</th>
+            </tr>
+            <tr>
+                <td valign="top" style="padding:5px;">
+                    <div id="basic_data">
+                        <label>Organization/組織基本資料</label>
+                        <table>
+                            <tr>
+                                <td>
+                                    <span>組織代碼</span>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <input type="text" id="org_acc" maxlength="64" required />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span>組織名稱</span>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <input type="text" id="org_name" maxlength="250" required />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span>組織類型</span>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <select id="type_list">
+
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span>Alias/組織代號或近似名稱</span>
+                                    <span style="color:red">**若有多個請用逗點隔開</span>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <textarea id="alias" maxlength="250">
+                                        
+                                    </textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span>電話號碼</span>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <input type="text" id="telecom_phone" maxlength="11" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span>傳真號碼</span>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <input type="text" id="telecom_fax" maxlength="11" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span>電子郵件信箱</span>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <input type="email" id="telecom_email" maxlength="250" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span>地址</span>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <div id="org_address_div">
+                                        <input type="text" id="org_address_line" placeholder="街道" />
+                                        <input type="text" id="org_address_postal" placeholder="郵遞區號" />
+                                        <input type="text" id="org_address_city" placeholder="市" />
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                        <br/>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="button" onclick="register_organization();" value="提交" />
+                    <input type="button" onclick="clear_input();" value="清空" />
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>
