@@ -12,15 +12,15 @@ In order to make examples here beginner friendly, no framework nor specific modu
 * Patient
   * **Status** **_UP_**
 * Practitioner
- * **Status** **_UP_**
+  * **Status** **_UP_**
 * CareTeam
- * **Status** **_PENDING_**
+  * **Status** **_PENDING_**
 * Device
- * **Status** **_PENDING_**
+  * **Status** **_PENDING_**
 * Organization
- * **Status** **_UP_**
+  * **Status** **_UP_**
 * Location
- * **Status** **_PENDING_**
+  * **Status** **_PENDING_**
 * HealthcareService
- * **Status** **_PENDING_**
+  * **Status** **_PENDING_**
 
