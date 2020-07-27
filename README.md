@@ -1,37 +1,26 @@
-## Welcome to GitHub Pages
+## FHIR WEB EXAMPLE
 
-You can use the [editor on GitHub](https://github.com/JonahYeoh/FHIR_WEB/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+This repository will mainly focus at all the resources in **_Level 3_** ( Patient, Practitioner, CareTeam, Device, Organization, Location, Healthcare Service ) of [FHIR](https://www.hl7.org/fhir/)
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+# Objective
+The main objective of this repository is to provide easy example of each resources to help _beginner_ learn FHIR faster. 
 
-### Markdown
+# Notes frome me
+In order to make examples here beginner friendly, no framework nor specific module will be used here. If you are already good at basic web programming and you can dive straight into directory/JS/<resource>_name_portal.js to check out the json structure of this each resource. Besides this, this repository is dedicated to Taiwan use-case, almost all of the HTML file here are in Taiwanese Mandrin and mandrin comment are provided in most of the code here.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+# Progress
+* Patient
+  * **Status** **_UP_**
+* Practitioner
+* **Status** **_UP_**
+* CareTeam
+* **Status** **_PENDING_**
+* Device
+* **Status** **_PENDING_**
+* Organization
+* **Status** **_UP_**
+* Location
+* **Status** **_PENDING_**
+* HealthcareService
+* **Status** **_PENDING_**
 
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/JonahYeoh/FHIR_WEB/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
