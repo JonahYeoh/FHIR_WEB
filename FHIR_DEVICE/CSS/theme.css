@@ -1,0 +1,8 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: RGB(255, 242, 233);
+    overflow: hidden;
+    font-family: 'Andika';
+    font-size: 18px;
+}
