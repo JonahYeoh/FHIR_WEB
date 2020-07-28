@@ -1,0 +1,28 @@
+{
+    "resourceType": "PractitionerRole",
+    "id": "",
+    "period": {
+        "start": ""
+    },
+    "practitioner": {
+        "reference": "Practitioner/"
+    },
+    "organization": {
+        "reference": "Organization/jonah"
+    },
+    "code": [{
+        "coding": [{
+            "system": "http://hl7.org/fhir/practitioner-role",
+            "code": ""
+        }]
+    }],
+    "specialty": [{
+        "coding": [{
+            "system": "https://www.hl7.org/fhir/valueset-c80-practice-codes.html",
+            "code": ""
+        }]
+    }],
+    "location": {
+        "reference": "Location/"
+    }
+}

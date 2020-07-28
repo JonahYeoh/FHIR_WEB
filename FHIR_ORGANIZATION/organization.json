@@ -1,0 +1,59 @@
+{
+    "resourceType": "Organization",
+    "id": "",
+    "active": "",
+    "type": [{
+        "coding": [{
+            "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+            "code": "",
+            "display": ""
+        }]
+    }],
+    "name": "",
+    "alias": [],
+    "telecom": [{
+            "system": "phone",
+            "value": "",
+            "use": "work"
+        },
+        {
+            "system": "fax",
+            "value": "",
+            "use": "work"
+        },
+        {
+            "system": "email",
+            "value": "",
+            "use": "work"
+        }
+    ],
+    "address": [{
+        "use": "work",
+        "text": "",
+        "line": [],
+        "city": "",
+        "postalCode": ""
+    }],
+    "contact": [{
+        "purpose": {
+            "coding": [{
+                "system": "http://terminology.hl7.org/CodeSystem/contactentity-type",
+                "code": "",
+                "display": ""
+            }]
+        },
+        "name": {},
+        "telecom": [{
+            "system": "phone",
+            "value": "",
+            "use": "mobile"
+        }],
+        "address": {
+            "use": "work",
+            "text": "",
+            "line": [],
+            "city": "",
+            "postalCode": ""
+        }
+    }]
+}
